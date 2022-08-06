@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Registrasi | Silantur</title>
+  <title>Registrasi | Kampong Melon</title>
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="description" content="Silantur, Sistem Informasi Penjualan Harga Telur - Pro Js Universitas Madura" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,7 +25,7 @@
         <div class="heading_s1 text-center">
           <img src="../assets/imgs/theme/Capture.PNG" width="150px" alt="logo">
           <h5 class="mb-5 mt-2">Registrasi</h5>
-          <p class="font-sm text-center">Daftar dan Nikmati Fitur Silantur</p>
+          <p class="font-sm text-center">Daftar dan Nikmati Fitur Sistem Informasi Penjualan Melon Napote</p>
         </div>
         <form class="mt-30" method="POST" action="">
           <div class="mb-3">
@@ -53,7 +53,7 @@
           </div>
           <div class="d-grid mb-2">
             <button type="submit" class="btn btn-green btn-sm d-grid" name="register">DAFTAR</button>
-            <p class="mt-3 font-sm">Sudah punya akun Silantur ? <a href="./login.php">Login</a></p>
+            <p class="mt-3 font-sm">Sudah punya akun ? <a href="./login.php">Login</a></p>
           </div>
         </form>
         <?php
@@ -112,7 +112,7 @@
   <div class="container wow animate__animated animate__fadeInUp" data-wow-delay="0">
     <div class="row justify-content-center mt-3">
       <div class="col-xl-4 col-lg-6 col-md-6 text-center mb-2">
-        <p class="font-sm">&copy; 2022, <strong class="text-brand">SILANTUR</strong> - Pro Js Universitas Madura
+        <p class="font-sm">&copy; 2022, <strong class="text-brand">Kampong Melon</strong> - Pro Js Universitas Madura
           <br />Zainal Fatah
         </p>
       </div>

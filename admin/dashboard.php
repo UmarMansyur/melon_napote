@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="alert alert-secondary" role="alert">
-                Selamat datang <?= $getdata["nama"] == null ? $getdata["username"] : $getdata["nama"] ?>, semoga harimu menyenangkan
+                Selamat datang <?= $getData['username'] ?>, semoga harimu menyenangkan
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
-include "../config/connection.php";
 session_start();
+include "../config/connection.php";
 if (empty($_SESSION['id'])) {
     header('location: ../auth/login.php');
 } else {
@@ -13,7 +13,7 @@ if (empty($_SESSION['id'])) {
 <head>
 
     <meta charset="utf-8" />
-    <title>Silantur | Admin</title>
+    <title>Kampong Melon | Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Melon Napote, Universitas Madura" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -71,7 +71,7 @@ if (empty($_SESSION['id'])) {
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-7.jpg" alt="Header Avatar">
-                            <span class="d-none d-xl-inline-block ms-1 text-white" key="t-henry"><?= $getData["nama"] == null ? $getData["username"] : $getData["nama"] ?></span>
+                            <span class="d-none d-xl-inline-block ms-1 text-white" key="t-henry"><?= $getData['username'] ?></span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block text-white"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -91,7 +91,7 @@ if (empty($_SESSION['id'])) {
                 <div id="sidebar-menu">
                     <div id="profile" class="text-center mt-4 mb-5">
                         <img class="rounded-circle header shadow" width="140px" src="assets/images/users/avatar-7.jpg" style="border: 3px solid white;">
-                        <h4 class="font-size-20 mt-2 text-white"><?= $getData["nama"] == null ? $getData["username"] : $getData["nama"] ?></h4>
+                        <h4 class="font-size-20 mt-2 text-white"><?= $getData['username'] ?></h4>
                     </div>
                     <!-- Left Menu Start -->
                     <ul class="metismenu list-unstyled" id="side-menu">
@@ -106,12 +106,12 @@ if (empty($_SESSION['id'])) {
                         <li class="menu-title text-white" key="t-menu">Toko</li>
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect text-white">
-                                <i class="bx bxs-store-alt text-white"></i>
+                                <i class="bx bx-git-merge text-white"></i>
                                 <span class="text-white">Jenis Melon</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="index.php?page=tambah_produk" class="text-white">Tambah Jenis</a></li>
-                                <li><a href="index.php?page=data_produk" class="text-white">Daftar Jenis Melon</a></li>
+                                <li><a href="index.php?page=tambah_jenis" class="text-white">Tambah Jenis</a></li>
+                                <li><a href="index.php?page=data_jenis" class="text-white">Daftar Jenis Melon</a></li>
                             </ul>
                         </li>
                         <li>
@@ -120,29 +120,34 @@ if (empty($_SESSION['id'])) {
                                 <span class="text-white">Data Melon</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="index.php?page=tambah_produk" class="text-white">Tambah Melon</a></li>
-                                <li><a href="index.php?page=data_produk" class="text-white">Daftar Melon</a></li>
+                                <li><a href="index.php?page=tambah_melon" class="text-white">Tambah Melon</a></li>
+                                <li><a href="index.php?page=data_melon" class="text-white">Daftar Melon</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="?page=pembelian" class="waves-effect">
-                                <i class="bx bxs-cart-alt text-white"></i>
-                                <span key="t-dashboards" class="text-white">Pembelian</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="?page=penjualan" class="waves-effect">
-                                <i class="bx bxs-archive text-white"></i>
-                                <span key="bx bxs-archive" class="text-white">Penjualan</span>
-                            </a>
-                        </li>
+                        <?php if ($getData['type'] == 'owner') : ?>
+                            <li>
+                                <a href="?page=pembelian" class="waves-effect">
+                                    <i class="bx bxs-cart-alt text-white"></i>
+                                    <span key="t-dashboards" class="text-white">Pembelian</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="?page=penjualan" class="waves-effect">
+                                    <i class="bx bxs-archive text-white"></i>
+                                    <span key="bx bxs-archive" class="text-white">Penjualan</span>
+                                </a>
+                            </li>
+                        <?php endif ?>
                         <li class="menu-title text-white" key="t-menu">Pasar</li>
-
                         <li>
-                            <a href="?page=manajemen" class="waves-effect">
-                                <i class="bx bxl-bitcoin text-white"></i>
-                                <span key="t-dashboards" class="text-white">Transaksi</span>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect text-white">
+                                <i class="bx bxs-cart-alt text-white"></i>
+                                <span key="t-dashboards" class="text-white">Data Transaksi</span>
                             </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="index.php?page=transaksi" class="text-white">Daftar Transaksi</a></li>
+                                <li><a href="index.php?page=tambah_transaksi" class="text-white">Tambah Transaksi</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -155,28 +160,7 @@ if (empty($_SESSION['id'])) {
         <!-- ============================================================== -->
         <div class="main-content">
             <div class="page-content">
-                <?php
-                @$page = $_GET['page'];
-                switch ($page) {
-                    case 'dashboard':
-                        include "./dashboard.php";
-                        break;
-                    case 'tambah_produk':
-                        include "./produk/tambah.php";
-                        break;
-                    case 'data_produk':
-                        include "./produk/data_melon.php";
-                        break;
-                    case 'profile':
-                        include "./profile.php";
-                        break;
-                    default:
-                        include "./dashboard.php";
-                        break;
-                }
-
-                ?>
-
+                <?php include './slot.php'; ?>
                 <!-- container-fluid -->
             </div>
             <!-- End Page-content -->
@@ -271,11 +255,11 @@ if (empty($_SESSION['id'])) {
                         <div class="col-sm-6">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> © Silantur. ProJs Universitas Madura
+                            </script> © Kampong Melon. ProJs Universitas Madura
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
-                                Muhammad Umar Mansyur
+                                Zainal Fatah
                             </div>
                         </div>
                     </div>
@@ -302,8 +286,8 @@ if (empty($_SESSION['id'])) {
     <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
     <script src="assets/js/pages/datatables.init.js"></script>
-    <script src="assets/js/pages/echarts.init.js"></script>
-    <script src="assets/libs/echarts/echarts.min.js"></script>
+    <!-- <script src="assets/js/pages/echarts.init.js"></script>
+    <script src="assets/libs/echarts/echarts.min.js"></script> -->
     <script src="assets/libs/dropzone/min/dropzone.min.js"></script>
 
 

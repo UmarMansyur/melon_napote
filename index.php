@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Silantur  | Sistem Informasi Penjualan Telur</title>
+    <title>Kampong Melon Napote</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,7 +36,7 @@
                                 <ul>
                                     <li>Lebih aman dan terpercaya</li>
                                     <li>Kemudahan dalam merekap transaksi</li>
-                                    <li>Pemantauan langsung update harga telur</li>
+                                    <li>Pemantauan langsung update harga melon</li>
                                 </ul>
                             </div>
                         </div>
@@ -65,9 +65,9 @@
                             <form action="#">
                                 <select class="select-active">
                                     <option>Semua Kategori</option>
-                                    <option>Telur Ayam Arab</option>
-                                    <option>Telur Ayam Ras</option>
-                                    <option>Telur Burung Puyuh</option>
+                                    <option>Melon Galia</option>
+                                    <option>Melon Madu</option>
+                                    <option>Melon Cinta</option>
                                 </select>
                                 <input type="text" placeholder="Cari ..." />
                             </form>
@@ -212,7 +212,7 @@
                     <a href="#"><img src="assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
                 </div>
                 <div class="site-copyright">
-                    2022 © SILANTUR. Pro Js Universitas Madura
+                    2022 © Kampong Melon. Pro Js Universitas Madura
                 </div>
             </div>
         </div>
@@ -220,9 +220,9 @@
     <!--End header-->
     <main class="main">
         <section class="hero-3 position-relative align-items">
-            <h1 class="mb-3 text-center">Selamat Datang di Silantur</h1>
-            <h5 class="mb-3 text-center">Sistem Informasi Penjualan Telur</h5>
-            <h6 class="text-center text-dark">Segera daftarkan diri anda <br> dan nikmati layanan dan fasilitas dari silantur</h6>
+            <h1 class="mb-3 text-center">Selamat Datang di Kampong Melon Napote</h1>
+            <h5 class="mb-3 text-center">Sistem Informasi Penjualan Melon Napote</h5>
+            <h6 class="text-center text-dark">Segera daftarkan diri anda <br> dan nikmati layanan dan fasilitas dari kampong napote</h6>
         </section>
         <section class="bg-grey-1 section-padding mt-30 pb-80 mb-80">
             <div class="container">
@@ -233,7 +233,7 @@
                             <img src="../assets/imgs/banner/telur-1.jpg" alt="" />
                             <div class="text-center">
                                 <div class="banner-text col-12 mt-2">
-                                    <h3>Telur <br> Ayam Horn</h3>
+                                    <h3>Melon <br>Cinta</h3>
                                     <a href="shop-grid-right.html" class="btn btn-xs mt-2">Shop Now <i class="fi-rs-arrow-small-right"></i></a>
                                 </div>
                             </div>
@@ -245,7 +245,7 @@
                             <img src="../assets/imgs/banner/telur-1.jpg" alt="" />
                             <div class="text-center">
                                 <div class="banner-text col-12 mt-2">
-                                    <h3>Telur <br> Ayam Arab</h3>
+                                    <h3>Melon <br>Galia</h3>
                                     <a href="shop-grid-right.html" class="btn btn-xs mt-2">Shop Now <i class="fi-rs-arrow-small-right"></i></a>
                                 </div>
                             </div>
@@ -257,7 +257,7 @@
                             <img src="../assets/imgs/banner/telur-1.jpg" alt="" />
                             <div class="text-center">
                                 <div class="banner-text col-12 mt-2">
-                                    <h3>Telur <br> Burung Puyuh</h3>
+                                    <h3>Melon <br>Natal</h3>
                                     <a href="shop-grid-right.html" class="btn btn-xs mt-2">Shop Now <i class="fi-rs-arrow-small-right"></i></a>
                                 </div>
                             </div>
@@ -683,21 +683,18 @@
                         <div class="widget-about font-md mb-md-3 mb-lg-3 mb-xl-0 wow animate__animated animate__fadeInUp" data-wow-delay="0">
                             <div class="logo mb-30">
                                 <a href="index.html" class="mb-15"><img src="assets/imgs/Capture.PNG" alt="logo" /></a>
-                                <p class="font-lg text-heading">
-                                    Praktikum Pemrograman Web
-                                </p>
                             </div>
                             <ul class="contact-infor">
                                 <li>
                                     <img src="assets/imgs/theme/icons/icon-location.svg" alt="" /><strong>Alamat:
                                     </strong>
-                                    <span>Rombasan Pragaan Sumenep 69465</span>
+                                    <span>Bira Tim., Kec. Sokobanah, Kabupaten Sampang, Jawa Timur 69262</span>
                                 </li>
                                 <li>
-                                    <img src="assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>Hubungi:</strong><span> (+62) - 85231339223</span>
+                                    <img src="assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>Hubungi:</strong><span> (+62)- 087771643030</span>
                                 </li>
                                 <li>
-                                    <img src="assets/imgs/theme/icons/icon-email-2.svg" alt="" /><strong>Email:</strong><span><a href="http://wp.alithemes.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dcafbdb0b99c92b9afa8f2bfb3b1"> umar.ovie@gmail.com</a></span>
+                                    <img src="assets/imgs/theme/icons/icon-email-2.svg" alt="" /><strong>Email:</strong><span><a href="http://wp.alithemes.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dcafbdb0b99c92b9afa8f2bfb3b1"> zainalfatah122@gmail.com</a></span>
                                 </li>
                             </ul>
                         </div>
@@ -721,7 +718,7 @@
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6">
                     <p class="font-sm mb-0">
-                        &copy; 2022, <strong class="text-brand">Silantur</strong> - ProJs Universitas Madura <br /> Muhammad Umar Mansyur
+                        &copy; 2022, <strong class="text-brand">Kampong Melon</strong> - ProJs Universitas Madura <br /> Zainal Fatah
                     </p>
                 </div>
                 <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">

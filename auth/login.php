@@ -1,9 +1,14 @@
+<?php
+session_start();
+if(!empty($_SESSION['id']))
+  echo "<script>window.location.href='index.php?page=dashboard'</script>";
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
   <meta charset="utf-8" />
-  <title>Login | Silantur</title>
+  <title>Login | Kampong Melon</title>
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="description" content="Silantur, Sistem Informasi Penjualan Harga Telur - Pro Js Universitas Madura" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,7 +30,7 @@
         <div class="heading_s1 text-center">
           <img src="../assets/imgs/theme/Capture.PNG" width="150px" alt="logo">
           <h5 class="mb-5 text-center">Masuk</h5>
-          <p class="text-center font-sm">Belum punya akun Silantur ? <a href="./register.php">Daftar</a></p>
+          <p class="text-center font-sm">Belum punya akun ? <a href="./register.php">Daftar</a></p>
         </div>
         <form class="mt-30" action="" method="POST">
           <div class="mb-3">
@@ -49,7 +54,6 @@
     </div>
   </div>
   <?php
-session_start();
 include '../config/connection.php';
 if (isset($_POST['masuk'])) {
   $email = mysqli_real_escape_string($connection, $_POST['email']);
@@ -96,7 +100,7 @@ if (isset($_POST['masuk'])) {
   <div class="container wow animate__animated animate__fadeInUp">
     <div class="row justify-content-center mt-3 mb-30">
       <div class="col-xl-4 col-lg-6 col-md-6 text-center mb-2">
-        <p class="font-sm">&copy; 2022, <strong class="text-brand">SILANTUR</strong> - Pro Js Universitas Madura <br />Muhammad Umar Mansyur</p>
+        <p class="font-sm">&copy; 2022, <strong class="text-brand">Kampong Melon</strong> - Pro Js Universitas Madura <br />Zainal fatah</p>
       </div>
     </div>
   </div>
