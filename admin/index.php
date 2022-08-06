@@ -140,14 +140,10 @@ if (empty($_SESSION['id'])) {
                         <?php endif ?>
                         <li class="menu-title text-white" key="t-menu">Pasar</li>
                         <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect text-white">
+                            <a href="?page=transaksi" class="waves-effect">
                                 <i class="bx bxs-cart-alt text-white"></i>
                                 <span key="t-dashboards" class="text-white">Data Transaksi</span>
                             </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="index.php?page=transaksi" class="text-white">Daftar Transaksi</a></li>
-                                <li><a href="index.php?page=tambah_transaksi" class="text-white">Tambah Transaksi</a></li>
-                            </ul>
                         </li>
                     </ul>
                 </div>

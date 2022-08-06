@@ -1,5 +1,5 @@
 <?php
-$hostname = 'localhost:3306';
+$hostname = 'localhost';
 $username = 'root';
 $password = '';
 $database = 'melon_napote';
