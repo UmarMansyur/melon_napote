@@ -22,6 +22,12 @@ switch ($page) {
     case 'transaksi':
         include "./transaksi/transaksi.php";
         break;
+    case 'data_transaksi':
+        include "./transaksi/daftar_transaksi.php";
+        break;
+    case 'detail_transaksi':
+        include "./transaksi/detail_transaksi.php";
+        break;
     default:
         include "./dashboard.php";
         break;

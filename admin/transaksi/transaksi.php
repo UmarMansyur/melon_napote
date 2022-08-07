@@ -24,70 +24,70 @@
                             $data = mysqli_fetch_assoc($connection->query("SELECT count(*) as banyak FROM tb_detail_transaksi WHERE id_pengguna = '$_SESSION[id]' AND status = 0"));
                             ?>
                             <?php
-                            if($data['banyak'] > 0):
+                            if ($data['banyak'] > 0) :
                             ?>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead class="align-middle">
-                                        <tr class="text-center">
-                                            <th>Nama Melon</th>
-                                            <th>Berat</th>
-                                            <th>Jumlah</th>
-                                            <th>Harga</th>
-                                            <th>Hapus</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $data = $connection->query("SELECT *, tb_detail_transaksi.harga as cost FROM tb_detail_transaksi LEFT JOIN tb_melon ON tb_detail_transaksi.id_melon = tb_melon.id_melon LEFT JOIN tb_jenis_melon ON tb_melon.id_jenis_melon = tb_jenis_melon.id_jenis_melon WHERE id_pengguna = '$_SESSION[id]' AND status = 0");
-                                        while ($p = mysqli_fetch_assoc($data)) :
-                                        ?>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead class="align-middle">
                                             <tr class="text-center">
-                                                <td class="text-start"><?= $p['nama_melon'] ?></td>
-                                                <td><?= $p['berat'] ?> kg</td>
-                                                <td><?= $p['jumlah'] ?></td>
-                                                <td>Rp <?= number_format($p['cost'], 2, ',', '.') ?></td>
-                                                </td>
-                                                <td>
-                                                    <a href="index.php?page=transaksi&hapus=<?= $p['id_detail_transaksi'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')" class="btn btn-outline-secondary btn-sm"><i class="fas fa-trash"></i></a>
+                                                <th>Nama Melon</th>
+                                                <th>Berat</th>
+                                                <th>Jumlah</th>
+                                                <th>Harga</th>
+                                                <th>Hapus</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $data = $connection->query("SELECT *, tb_detail_transaksi.harga as cost FROM tb_detail_transaksi LEFT JOIN tb_melon ON tb_detail_transaksi.id_melon = tb_melon.id_melon LEFT JOIN tb_jenis_melon ON tb_melon.id_jenis_melon = tb_jenis_melon.id_jenis_melon WHERE id_pengguna = '$_SESSION[id]' AND status = 0");
+                                            while ($p = mysqli_fetch_assoc($data)) :
+                                            ?>
+                                                <tr class="text-center">
+                                                    <td class="text-start"><?= $p['nama_melon'] ?></td>
+                                                    <td><?= $p['berat'] ?> kg</td>
+                                                    <td><?= $p['jumlah'] ?></td>
+                                                    <td>Rp <?= number_format($p['cost'], 2, ',', '.') ?></td>
+                                                    </td>
+                                                    <td>
+                                                        <a href="index.php?page=transaksi&hapus=<?= $p['id_detail_transaksi'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')" class="btn btn-outline-secondary btn-sm"><i class="fas fa-trash"></i></a>
+
+                                                    </td>
+                                                </tr>
+                                            <?php endwhile ?>
+                                            <tr class="align-middle">
+                                                <?php
+                                                $data = mysqli_fetch_assoc($connection->query("SELECT SUM(harga) as total FROM tb_detail_transaksi WHERE id_pengguna = '$_SESSION[id]' AND status = 0"));
+                                                ?>
+                                                <td colspan="3" class="text-center fw-bold">Total</td>
+                                                <td class="text-center">Rp <?= number_format($data['total'], 2, ',', '.') ?></td>
+                                                <td class="text-center">
+                                                    <a href="" data-bs-target="#bayar" data-bs-toggle="modal" class="btn btn-success d-block">Bayar</a>
 
                                                 </td>
                                             </tr>
-                                        <?php endwhile ?>
-                                        <tr class="align-middle">
-                                            <?php
-                                            $data = mysqli_fetch_assoc($connection->query("SELECT SUM(harga) as total FROM tb_detail_transaksi WHERE id_pengguna = '$_SESSION[id]' AND status = 0"));
-                                            ?>
-                                            <td colspan="3" class="text-center fw-bold">Total</td>
-                                            <td class="text-center">Rp <?= number_format($data['total'], 2, ',', '.') ?></td>
-                                            <td class="text-center">
-                                                <a href="" data-bs-target="#bayar" data-bs-toggle="modal" class="btn btn-success d-block">Bayar</a>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <?php else: ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <?php else : ?>
                                 <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead class="align-middle">
-                                        <tr class="text-center">
-                                            <th>Nama Melon</th>
-                                            <th>Berat</th>
-                                            <th>Jumlah</th>
-                                            <th>Harga</th>
-                                            <th>Hapus</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="5" class="text-center">Tidak ada transaksi</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <?php endif?>
+                                    <table class="table table-bordered">
+                                        <thead class="align-middle">
+                                            <tr class="text-center">
+                                                <th>Nama Melon</th>
+                                                <th>Berat</th>
+                                                <th>Jumlah</th>
+                                                <th>Harga</th>
+                                                <th>Hapus</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="5" class="text-center">Tidak ada transaksi</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <?php endif ?>
                             <div class="modal fade bs-example-modal-center" id="addToCart" tabindex="-1" aria-modal="true" role="dialog">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">

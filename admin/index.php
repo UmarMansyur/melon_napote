@@ -295,7 +295,32 @@ if (empty($_SESSION['id'])) {
     <!-- <script src="assets/js/pages/echarts.init.js"></script>
     <script src="assets/libs/echarts/echarts.min.js"></script> -->
     <script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+    <script>
+        $("#dataTable").DataTable({
+            "language": {
+                "sProcessing": "Sedang memproses...",
+                "sLengthMenu": "Tampilkan _MENU_ data",
+                "sZeroRecords": "Data Tidak Ada",
+                "sInfo": "_START_ - _END_ dari _TOTAL_ data",
+                "sInfoEmpty": "Data Kosong",
+                "sInfoFiltered": "(_MAX_ data keseluruhan)",
+                "sInfoPostFix": "",
+                "sSearch": "Cari :",
+                "sUrl": "",
+                "oPaginate": {
+                    "sFirst": "Awal",
+                    "sPrevious": "Sebelumnya",
+                    "sNext": "Selanjutnya",
+                    "sLast": "Terakhir"
+                }
+            },
+            "lengthMenu": [
+                [5, 10, 25, 50],
+                [5, 10, 25, 50]
+            ],
 
+        });
+    </script>
 
 </body>
 
