@@ -62,7 +62,6 @@
                                                 <td class="text-center">Rp <?= number_format($data['total'], 2, ',', '.') ?></td>
                                                 <td class="text-center">
                                                     <a href="" data-bs-target="#bayar" data-bs-toggle="modal" class="btn btn-success d-block">Bayar</a>
-
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -189,15 +188,17 @@
                                     });
                                     </script>";
                                 } catch (\Throwable $th) {
-                                    echo " <script>
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Gagal!',
-                                        showConfirmButton: true,
-                                    }).then(function(){
-                                        window.location.href='';
-                                    });
-                                    </script>";
+                                    echo $th;
+                                    // echo " <script>
+                                    // alert($th);
+                                    // // Swal.fire({
+                                    // //     icon: 'error',
+                                    // //     title: 'Gagal!',
+                                    // //     showConfirmButton: true,
+                                    // // }).then(function(){
+                                    // //     window.location.href='';
+                                    // // });
+                                    // </script>";
                                 }
                             }
                             ?>
