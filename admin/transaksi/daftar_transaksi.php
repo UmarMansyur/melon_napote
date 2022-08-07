@@ -14,7 +14,7 @@
                     <p class="card-title-desc">Pastikan data yang diinputkan telah valid!, data di menu transaksi akan hilang ketika status sudah dibayar!</p>
                     <div class="row">
                         <div class="col-lg-4 d-none d-xl-inline-block">
-                            <img src="./assets/images/undraw_shopping_app_flsj.svg" alt="logo" class="img-fluid d-block">
+                            <img src="./assets/images/transaksi.svg" alt="logo" class="img-fluid d-block">
                         </div>
                         <div class="col-lg-8">
                             <div class="text-end my-3">
