@@ -39,13 +39,13 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $data = $connection->query("SELECT *, tb_detail_transaksi.harga as cost FROM tb_detail_transaksi LEFT JOIN tb_melon ON tb_detail_transaksi.id_melon = tb_melon.id_melon LEFT JOIN tb_jenis_melon ON tb_melon.id_jenis_melon = tb_jenis_melon.id_jenis_melon WHERE id_pengguna = '$_SESSION[id]' AND status = 0");
+                                            $data = $connection->query("SELECT *, tb_detail_transaksi.harga as cost, tb_detail_transaksi.jumlah as jumlahnya, tb_detail_transaksi.berat as beratnya FROM tb_detail_transaksi LEFT JOIN tb_melon ON tb_detail_transaksi.id_melon = tb_melon.id_melon LEFT JOIN tb_jenis_melon ON tb_melon.id_jenis_melon = tb_jenis_melon.id_jenis_melon WHERE id_pengguna = '$_SESSION[id]' AND status = 0");
                                             while ($p = mysqli_fetch_assoc($data)) :
                                             ?>
                                                 <tr class="text-center">
                                                     <td class="text-start"><?= $p['nama_melon'] ?></td>
-                                                    <td><?= $p['berat'] ?> kg</td>
-                                                    <td><?= $p['jumlah'] ?></td>
+                                                    <td><?= $p['beratnya'] ?> kg</td>
+                                                    <td><?= $p['jumlahnya'] ?></td>
                                                     <td>Rp <?= number_format($p['cost'], 2, ',', '.') ?></td>
                                                     </td>
                                                     <td>
@@ -176,7 +176,7 @@
                                 $jumlah = mysqli_real_escape_string($connection, $_POST['jumlah']);
                                 $berat = mysqli_real_escape_string($connection, $_POST['berat']);
                                 $id = mysqli_fetch_assoc($connection->query("SELECT harga FROM tb_melon WHERE tb_melon.id_melon = $nama"));
-                                $harga = doubleval($jumlah) * $id['harga'];
+                                $harga = doubleval($jumlah) * ($id['harga'] * $berat);
                                 try {
                                     $connection->query("INSERT INTO tb_detail_transaksi VALUES (NULL, NULL, '$_SESSION[id]',$nama, $jumlah, $berat, $harga, 0)");
                                     echo " <script>
