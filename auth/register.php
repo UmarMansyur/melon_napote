@@ -23,7 +23,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-4 mt-15 bg-white border py-4 px-4" style="border-radius: 10px;">
         <div class="heading_s1 text-center">
-          <img src="../assets/imgs/theme/Capture.PNG" width="150px" alt="logo">
+          <!-- <img src="../assets/imgs/theme/Capture.PNG" width="150px" alt="logo"> -->
           <h5 class="mb-5 mt-2">Registrasi</h5>
           <p class="font-sm text-center">Daftar dan Nikmati Fitur Sistem Informasi Penjualan Melon Napote</p>
         </div>

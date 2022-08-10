@@ -25,7 +25,7 @@ if (isset($_GET['edit_produk'])) {
                             <form action="" method="POST">
                                 <div class="mb-3 mt-2">
                                     <label for="nama_jenis" class="form-label">Nama Jenis <sup class="text-danger">* Wajib</sup></label>
-                                    <input type="text" class="form-control" name="nama_jenis" id="nama_jenis" placeholder="Nama Jenis Melon" value="<?= isset($_GET['edit_produk']) ? $data['jenis_melon'] : '' ?>">
+                                    <input type="text" class="form-control" name="nama_jenis" id="nama_jenis" placeholder="Nama Jenis Melon" value="<?= isset($_GET['edit_produk']) ? $data['jenis_melon'] : '' ?>" required>
                                 </div>
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary w-md" name="<?= @($_GET['edit_produk']) ? 'edit' : 'add' ?>"><?= @($_GET['edit_produk']) ? 'Simpan' : 'Tambahkan' ?></button>
@@ -59,7 +59,7 @@ if (isset($_GET['edit_produk'])) {
                                 </script>";
                         }
                     } ?>
-                    <?php if(isset($_POST['edit'])){
+                    <?php if (isset($_POST['edit'])) {
                         try {
                             $today = date("Y-m-d H:i:s");
                             $nama_jenis = mysqli_escape_string($connection, $_POST["nama_jenis"]);

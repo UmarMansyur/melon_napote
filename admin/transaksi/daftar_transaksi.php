@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-lg-8">
                             <div class="text-end my-3">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToCart">Tambah Transaksi</button>
+                                <a href="index.php?page=transaksi" class="btn btn-primary">Tambah Transaksi</a>
                             </div>
                             <table id="dataTable" class="table table-bordered dt-responsive  nowrap w-100">
                                 <thead>
@@ -32,8 +32,6 @@
                                 <tbody>
                                     <?php
                                     $getResource = $connection->query("SELECT * FROM tb_transaksi");
-                                    // var_dump(mysqli_fetch_assoc($getResource));
-                                    // die();
                                     while ($data = mysqli_fetch_assoc($getResource)) :
                                     ?>
                                         <tr>

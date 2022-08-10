@@ -32,20 +32,18 @@
                                             <tr class="text-center">
                                                 <th>Nama Melon</th>
                                                 <th>Berat</th>
-                                                <th>Jumlah</th>
                                                 <th>Harga</th>
                                                 <th>Hapus</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $data = $connection->query("SELECT *, tb_detail_transaksi.harga as cost, tb_detail_transaksi.jumlah as jumlahnya, tb_detail_transaksi.berat as beratnya FROM tb_detail_transaksi LEFT JOIN tb_melon ON tb_detail_transaksi.id_melon = tb_melon.id_melon LEFT JOIN tb_jenis_melon ON tb_melon.id_jenis_melon = tb_jenis_melon.id_jenis_melon WHERE id_pengguna = '$_SESSION[id]' AND status = 0");
+                                            $data = $connection->query("SELECT *, tb_detail_transaksi.harga as cost, tb_detail_transaksi.berat as beratnya FROM tb_detail_transaksi LEFT JOIN tb_melon ON tb_detail_transaksi.id_melon = tb_melon.id_melon LEFT JOIN tb_jenis_melon ON tb_melon.id_jenis_melon = tb_jenis_melon.id_jenis_melon WHERE id_pengguna = '$_SESSION[id]' AND status = 0");
                                             while ($p = mysqli_fetch_assoc($data)) :
                                             ?>
                                                 <tr class="text-center">
                                                     <td class="text-start"><?= $p['nama_melon'] ?></td>
                                                     <td><?= $p['beratnya'] ?> kg</td>
-                                                    <td><?= $p['jumlahnya'] ?></td>
                                                     <td>Rp <?= number_format($p['cost'], 2, ',', '.') ?></td>
                                                     </td>
                                                     <td>
@@ -58,7 +56,7 @@
                                                 <?php
                                                 $data = mysqli_fetch_assoc($connection->query("SELECT SUM(harga) as total FROM tb_detail_transaksi WHERE id_pengguna = '$_SESSION[id]' AND status = 0"));
                                                 ?>
-                                                <td colspan="3" class="text-center fw-bold">Total</td>
+                                                <td colspan="2" class="text-center fw-bold">Total</td>
                                                 <td class="text-center">Rp <?= number_format($data['total'], 2, ',', '.') ?></td>
                                                 <td class="text-center">
                                                     <a href="" data-bs-target="#bayar" data-bs-toggle="modal" class="btn btn-success d-block">Bayar</a>
@@ -74,14 +72,13 @@
                                             <tr class="text-center">
                                                 <th>Nama Melon</th>
                                                 <th>Berat</th>
-                                                <th>Jumlah</th>
                                                 <th>Harga</th>
                                                 <th>Hapus</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td colspan="5" class="text-center">Tidak ada transaksi</td>
+                                                <td colspan="4" class="text-center">Tidak ada transaksi</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -109,12 +106,8 @@
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="jumlah">Jumlah: </label>
-                                                    <input type="number" name="jumlah" id="jumlah" class="form-control" placeholder="Contoh: 1">
-                                                </div>
-                                                <div class="mb-3">
                                                     <label for="berat">Berat: </label>
-                                                    <input type="number" name="berat" id="berat" class="form-control" placeholder="Contoh: 1kg">
+                                                    <input type="number" name="berat" id="berat" class="form-control" placeholder="Contoh: 1 kg" required>
                                                 </div>
                                                 <div class="text-end">
                                                     <button class="btn btn-light" data-bs-dismiss="modal">Batal</button>
@@ -137,22 +130,22 @@
                                             <form action="" method="POST" class="px-1">
                                                 <div class="mb-3">
                                                     <label for="nama_pembeli">Nama Pembeli: </label>
-                                                    <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Nama Pembeli">
+                                                    <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Nama Pembeli" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="byr">Bayar: </label>
-                                                    <input type="number" name="byr" id="byr" class="form-control" placeholder="Rp. 0">
+                                                    <input type="number" name="byr" id="byr" class="form-control" placeholder="Rp. 0" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="kembali">Kembali: </label>
-                                                    <input type="text" name="kembali" id="kembali" class="form-control" placeholder="Rp. 0">
+                                                    <input type="text" name="kembali" id="kembali" class="form-control" placeholder="Rp. 0" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="total">Total: </label>
                                                     <?php
                                                     $data = mysqli_fetch_assoc($connection->query("SELECT SUM(harga) as total FROM tb_detail_transaksi WHERE id_pengguna = '$_SESSION[id]' AND status = 0"));
                                                     ?>
-                                                    <input type="text" name="total" id="total" class="form-control" value="Rp <?= number_format($data['total'], 2, ',', '.') ?>">
+                                                    <input type="text" name="total" id="total" class="form-control" value="Rp <?= number_format($data['total'], 2, ',', '.') ?>" required>
                                                 </div>
                                                 <script>
                                                     document.getElementById('byr').onchange = () => {
@@ -172,12 +165,11 @@
                             <?php
                             if (isset($_POST['simpan'])) {
                                 $nama = mysqli_real_escape_string($connection, $_POST['nama_melon']);
-                                $jumlah = mysqli_real_escape_string($connection, $_POST['jumlah']);
                                 $berat = mysqli_real_escape_string($connection, $_POST['berat']);
                                 $id = mysqli_fetch_assoc($connection->query("SELECT harga FROM tb_melon WHERE tb_melon.id_melon = $nama"));
-                                $harga = doubleval($jumlah) * ($id['harga'] * $berat);
+                                $harga = ($id['harga'] * $berat);
                                 try {
-                                    $connection->query("INSERT INTO tb_detail_transaksi VALUES (NULL, NULL, '$_SESSION[id]',$nama, $jumlah, $berat, $harga, 0)");
+                                    $connection->query("INSERT INTO tb_detail_transaksi VALUES (NULL, NULL, '$_SESSION[id]',$nama, $berat, $harga, 0)");
                                     echo " <script>
                                     Swal.fire({
                                         icon: 'success',
@@ -188,17 +180,16 @@
                                     });
                                     </script>";
                                 } catch (\Throwable $th) {
-                                    echo $th;
-                                    // echo " <script>
-                                    // alert($th);
-                                    // // Swal.fire({
-                                    // //     icon: 'error',
-                                    // //     title: 'Gagal!',
-                                    // //     showConfirmButton: true,
-                                    // // }).then(function(){
-                                    // //     window.location.href='';
-                                    // // });
-                                    // </script>";
+                                    echo " <script>
+                                    alert($th);
+                                    // Swal.fire({
+                                    //     icon: 'error',
+                                    //     title: 'Gagal!',
+                                    //     showConfirmButton: true,
+                                    // }).then(function(){
+                                    //     window.location.href='';
+                                    // });
+                                    </script>";
                                 }
                             }
                             ?>

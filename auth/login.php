@@ -28,7 +28,7 @@ if(!empty($_SESSION['id']))
     <div class="row justify-content-center mt-30">
       <div class="col-lg-4 mt-30 bg-white border py-4 px-4" style="border-radius: 10px;">
         <div class="heading_s1 text-center">
-          <img src="../assets/imgs/theme/Capture.PNG" width="150px" alt="logo">
+          <!-- <img src="../assets/imgs/theme/Capture.PNG" width="150px" alt="logo"> -->
           <h5 class="mb-5 text-center">Masuk</h5>
           <p class="text-center font-sm">Belum punya akun ? <a href="./register.php">Daftar</a></p>
         </div>
@@ -62,6 +62,7 @@ if (isset($_POST['masuk'])) {
     $data = mysqli_fetch_assoc($connection->query("SELECT * FROM tb_pengguna WHERE email = '$email'"));
       if (password_verify($password, $data['password'])) {
         $_SESSION['id'] = $data['id_pengguna'];
+        $_SESSION['nama'] = $data['username'];
         $_SESSION['type'] = $data['type'];
         echo " <script>
           Swal.fire({

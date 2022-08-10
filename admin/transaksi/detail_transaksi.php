@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-lg-8">
                             <div class="text-end my-3">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToCart">Kembali</button>
+                                <a href="index.php?page=data_transaksi" class="btn btn-primary">Kembali</a>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered">
@@ -26,7 +26,6 @@
                                         <tr class="text-center">
                                             <th>Nama Melon</th>
                                             <th>Berat</th>
-                                            <th>Jumlah</th>
                                             <th>Harga</th>
                                             <th>Hapus</th>
                                         </tr>
@@ -39,7 +38,6 @@
                                             <tr class="text-center">
                                                 <td class="text-start"><?= $p['nama_melon'] ?></td>
                                                 <td><?= $p['berat'] ?> kg</td>
-                                                <td><?= $p['jumlah'] ?></td>
                                                 <td>Rp <?= number_format($p['cost'], 2, ',', '.') ?></td>
                                                 </td>
                                                 <td>
@@ -52,11 +50,10 @@
                                             <?php
                                             $data = mysqli_fetch_assoc($connection->query("SELECT SUM(harga) as total FROM tb_detail_transaksi WHERE id_pengguna = '$_SESSION[id]' AND status = 1 AND id_transaksi = '$_GET[id]'"));
                                             ?>
-                                            <td colspan="3" class="text-center fw-bold">Total</td>
+                                            <td colspan="2" class="text-center fw-bold">Total</td>
                                             <td class="text-center">Rp <?= number_format($data['total'], 2, ',', '.') ?></td>
                                             <td class="text-center">
-                                                <a href="" class="btn btn-danger d-block">Cetak</a>
-
+                                                <a href="./transaksi/print/struk_belanja.php?id_transaksi=<?= $_GET['id']?>" class="btn btn-danger d-block">Cetak</a>
                                             </td>
                                         </tr>
                                     </tbody>

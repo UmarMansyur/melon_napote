@@ -62,7 +62,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="harga" class="form-label">Harga <sup class="text-danger">* Wajib</sup></label>
-                                        <input type="number" class="form-control" id="harga" name="harga" placeholder="Harga" value="<?= @($_GET['edit_produk']) ? $getResource['harga'] : ''?>">
+                                        <input type="number" class="form-control" id="harga" name="harga" placeholder="Harga" value="<?= @($_GET['edit_produk']) ? $getResource['harga'] : ''?>" required>
                                     </div>
                                 </div>
                             </div>

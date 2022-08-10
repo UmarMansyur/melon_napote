@@ -12,10 +12,10 @@
         <div class="col-12 mt-3">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Daftar Produk</h4>
+                    <h4 class="card-title">Data Melon</h4>
                     <p class="card-title-desc">Pastikan keterbaharuan produk baik dari stok maupun harga
                     </p>
-                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                    <table id="dataTable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
                             <tr class="text-center">
                                 <th>Nama Produk</th>
@@ -23,7 +23,9 @@
                                 <th>Stok</th>
                                 <th>Harga</th>
                                 <th>Satus</th>
+                                <?php if($getData['type'] == 'kasir'): ?>
                                 <th>Hapus</th>
+                                <?php endif ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,13 +41,18 @@
                                     <td><?= $p['harga'] ?>/<?= $p['berat'] ?> kg</td>
                                     <td><a href="./qrCode/qr.php?qr=<?= $p['id_melon']?>" target="__blank" class="btn btn-outline-info btn-sm"><i class="bx bx-printer"></i></a></td>
                                     </td>
+           
+                                <?php if($getData['type'] == 'kasir'): ?>
+
                                     <td>
                                         <a href="index.php?page=tambah_melon&edit_produk=<?= $p['id_melon'] ?>" class="btn btn-outline-secondary btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                         <a href="index.php?page=data_melon&hapus=<?= $p['id_melon'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')" class="btn btn-outline-secondary btn-sm"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
-                            <?php endwhile ?>
-                        </tbody>
+                                    <?php endif; ?>
+                                <?php endwhile ?>
+                                
+                            </tbody>
                     </table>
                     <?php if (isset($_GET['hapus'])) {
                         try {

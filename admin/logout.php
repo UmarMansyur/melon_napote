@@ -2,10 +2,4 @@
 session_start();
 session_destroy();
 
-echo""
-?>
-
-<script>
-    alert('Anda telah logout!');
-    window.location.href="../index.php";
-</script>
+echo "<script>window.location.href='/auth/login.php'</script>";
