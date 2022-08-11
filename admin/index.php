@@ -101,7 +101,7 @@ if (empty($_SESSION['id'])) {
                             </a>
                         </li>
                         <li class="menu-title text-white" key="t-menu">Toko</li>
-                        <?php if ($getData['type'] == 'kasir') : ?>
+                        <?php if ($getData['type'] == 'kasir' || $getData['type'] == 'admin') : ?>
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect text-white">
                                     <i class="bx bx-git-merge text-white"></i>
@@ -123,59 +123,56 @@ if (empty($_SESSION['id'])) {
                                 </ul>
                             </li>
                         <?php endif ?>
-                        <?php if ($getData['type'] == 'owner') : ?>
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect text-white">
-                                    <i class="bx bx-store-alt text-white"></i>
-                                    <span class="text-white">Produk</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="index.php?page=data_jenis" class="text-white">Data Jenis Melon</a></li>
-                                    <li><a href="index.php?page=data_melon" class="text-white">Data Melon</a></li>
-                                </ul>
-                            </li>
+                        <?php if ($getData['type'] == 'owner' || $getData['type'] == 'admin') : ?>
+                            <?php if ($getData['type'] != 'admin') : ?>
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect text-white">
+                                        <i class="bx bx-store-alt text-white"></i>
+                                        <span class="text-white">Produk</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="index.php?page=data_jenis" class="text-white">Data Jenis Melon</a></li>
+                                        <li><a href="index.php?page=data_melon" class="text-white">Data Melon</a></li>
+                                    </ul>
+                                </li>
+                            <?php endif ?>
+                            <?php if ($getData['type'] == 'admin') : ?>
+                                <li class="menu-title text-white" key="t-menu">Laporan</li>
+                            <?php endif ?>
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect text-white">
                                     <i class="bx bxs-report text-white"></i>
                                     <span class="text-white">Laporan Penjualan</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="index.php?page=data_transaksi" class="text-white">Data Transaksi</a></li>
+                                    <li><a href="index.php?page=data_transaksi" class="text-white">Laporan Harian</a></li>
+                                    <li><a href="index.php?page=data_transaksi_bulanan" class="text-white">Laporan Bulanan</a></li>
                                     <li><a href="index.php?page=grafik" class="text-white">Grafik Penjualan</a></li>
                                 </ul>
                             </li>
-                            <!-- <li>
-                                <a href="?page=pembelian" class="waves-effect">
-                                    <i class="bx bxs-cart-alt text-white"></i>
-                                    <span key="t-dashboards" class="text-white">Data Melon</span>
-                                </a>
-                            </li> -->
-                            <!-- <li>
-                                <a href="?page=penjualan" class="waves-effect">
-                                    <i class="bx bxs-archive text-white"></i>
-                                    <span key="bx bxs-archive" class="text-white">Penjualan</span>
-                                </a>
-                            </li> -->
                         <?php endif ?>
                         <?php if ($getData['type'] != 'owner') : ?>
-                        <li class="menu-title text-white" key="t-menu">Pasar</li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect text-white">
-                                <i class="bx bxs-cart-alt text-white"></i>
-                                <span class="text-white">Transaksi</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="?page=transaksi" class="text-white">Tambah Transaksi</a></li>
-                                <li><a href="?page=data_transaksi" class="text-white">Daftar Transaksi</a></li>
-                            </ul>
-                        </li>
+                            <li class="menu-title text-white" key="t-menu">Pasar</li>
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect text-white">
+                                    <i class="bx bxs-cart-alt text-white"></i>
+                                    <span class="text-white">Transaksi</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="?page=transaksi" class="text-white">Tambah Transaksi</a></li>
+                                    <li><a href="?page=data_transaksi" class="text-white">Daftar Transaksi</a></li>
+                                </ul>
+                            </li>
                         <?php endif ?>
-                        <!-- <li>
-                            <a href="?page=transaksi" class="waves-effect">
-                                <i class="bx bxs-cart-alt text-white"></i>
-                                <span key="t-dashboards" class="text-white">Data Transaksi</span>
-                            </a>
-                        </li> -->
+                        <?php if ($getData['type'] == 'admin') : ?>
+                            <li class="menu-title text-white" key="t-menu">Pengaturan</li>
+                            <li>
+                                <a href="?page=transaksi" class="waves-effect">
+                                    <i class="bx bx-user text-white"></i>
+                                    <span key="t-dashboards" class="text-white">Manajemen Pengguna</span>
+                                </a>
+                            </li>
+                        <?php endif ?>
                     </ul>
                 </div>
                 <!-- Sidebar -->

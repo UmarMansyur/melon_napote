@@ -32,6 +32,6 @@ if (isset($_GET['edit_produk'])) {
                     </div>
                 </div>
             </div>
-        </div> <!-- end col -->
+        </div>
     </div>
 </div>

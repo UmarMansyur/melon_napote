@@ -17,14 +17,22 @@
                             <img src="./assets/images/transaksi.svg" alt="logo" class="img-fluid d-block">
                         </div>
                         <div class="col-lg-8">
+                            <?php if($getData['type'] == 'kasir'): ?>
                             <div class="text-end my-3">
                                 <a href="index.php?page=transaksi" class="btn btn-primary">Tambah Transaksi</a>
                             </div>
+                            <?php endif ?>
+                            <?php if($getData['type'] != 'kasir'): ?>
+                            <div class="text-end my-3">
+                                <a href="../admin/transaksi/print/excel_transaksi.php" target="__blank" class="btn btn-success">Export Excel</a>
+                            </div>
+                            <?php endif ?>
                             <table id="dataTable" class="table table-bordered dt-responsive  nowrap w-100">
                                 <thead>
                                     <tr class="text-center">
                                         <th>Nama Pemesan</th>
                                         <th>Tanggal Transaksi</th>
+                                        <th>Pendapatan</th>
                                         <th>Detail</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -37,6 +45,7 @@
                                         <tr>
                                             <td><?= $data['nama_pembeli'] ?></td>
                                             <td class="text-center"><?= $data['created_at'] ?></td>
+                                            <td><?= $data['harga_total']?></td>
                                             <td class="text-center">
                                                 <a href="index.php?page=detail_transaksi&id=<?= $data['id_transaksi']?>" class="btn btn-outline-info btn-sm">Lihat</a>
                                             </td>
