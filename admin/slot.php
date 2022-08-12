@@ -13,7 +13,7 @@ switch ($getData['type']) {
                 include "./jenis/data_melon.php";
                 break;
             case 'profile':
-                include "./profile.php";
+                include "./akun/profile.php";
                 break;
             case 'data_melon':
                 include "./data_melon/data_melon.php";
@@ -104,12 +104,38 @@ switch ($getData['type']) {
             case 'grafik':
                 include './chart/grafik.php';
                 break;
+            case 'setting':
+                include './manajemen_pengguna/setting.php';
+                break;
             default:
                 include "./dashboard.php";
                 break;
         }
-        break;
+    break;
+    case 'user':
+        switch ($page) {
+            case 'dashboard':
+                include "./dashboard.php";
+                break;
+            case 'profile':
+                include "./akun/profile.php";
+                break;
+            case 'transaksi':
+                include "./transaksi/transaksi.php";
+                break;
+            case 'data_transaksi':
+                include "./transaksi/daftar_transaksi.php";
+                break;
+            case 'detail_transaksi':
+                include "./transaksi/detail_transaksi.php";
+                break;
+            default:
+                include "./dashboard.php";
+                break;
+        }
+    break;
     default:
         # code...
         break;
+    
 }

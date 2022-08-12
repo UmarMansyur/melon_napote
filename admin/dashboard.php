@@ -112,14 +112,5 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col-lg-6 col-nd-6 col-sm-12 col-xl-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">Statistik Penjualan Perbulan</h4>
-                    <div id="line_chart_datalabel" class="apex-charts"></div>
-                </div>
-            </div>
-        </div> -->
     </div>
-    <!-- end page title -->
 </div>

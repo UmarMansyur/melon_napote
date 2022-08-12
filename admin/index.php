@@ -67,7 +67,7 @@ if (empty($_SESSION['id'])) {
                 <div class="d-flex">
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-7.jpg" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="../upload/pengguna/<?= $getData['thumbnail'] == null ? 'default.jpg' : $getData['thumbnail'] ?>" alt="Header Avatar">
                             <span class="d-none d-xl-inline-block ms-1 text-white" key="t-henry"><?= $getData['username'] ?></span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block text-white"></i>
                         </button>
@@ -87,7 +87,7 @@ if (empty($_SESSION['id'])) {
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
                     <div id="profile" class="text-center mt-4 mb-5">
-                        <img class="rounded-circle header shadow" width="140px" src="assets/images/users/avatar-7.jpg" style="border: 3px solid white;">
+                        <img class="rounded-circle header shadow" width="140px" src="../upload/pengguna/<?= $getData['thumbnail'] == null ? 'default.jpg' : $getData['thumbnail'] ?>" style="border: 3px solid white;">
                         <h4 class="font-size-20 mt-2 text-white"><?= $getData['username'] ?></h4>
                     </div>
                     <!-- Left Menu Start -->
@@ -100,8 +100,8 @@ if (empty($_SESSION['id'])) {
                                 <span key="t-dashboards" class="text-white">Dashboard</span>
                             </a>
                         </li>
-                        <li class="menu-title text-white" key="t-menu">Toko</li>
                         <?php if ($getData['type'] == 'kasir' || $getData['type'] == 'admin') : ?>
+                            <li class="menu-title text-white" key="t-menu">Toko</li>
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect text-white">
                                     <i class="bx bx-git-merge text-white"></i>
@@ -167,7 +167,7 @@ if (empty($_SESSION['id'])) {
                         <?php if ($getData['type'] == 'admin') : ?>
                             <li class="menu-title text-white" key="t-menu">Pengaturan</li>
                             <li>
-                                <a href="?page=transaksi" class="waves-effect">
+                                <a href="?page=setting" class="waves-effect">
                                     <i class="bx bx-user text-white"></i>
                                     <span key="t-dashboards" class="text-white">Manajemen Pengguna</span>
                                 </a>
@@ -178,10 +178,6 @@ if (empty($_SESSION['id'])) {
                 <!-- Sidebar -->
             </div>
         </div>
-        <!-- Left Sidebar End -->
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
         <div class="main-content">
             <div class="page-content">
                 <?php include './slot.php'; ?>
@@ -206,21 +202,15 @@ if (empty($_SESSION['id'])) {
                 </div>
             </footer>
         </div>
-        <!-- end main content-->
     </div>
-    <!-- END layout-wrapper -->
-    <!-- JAVASCRIPT -->
     <script src="assets/libs/jquery/jquery.min.js"></script>
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/libs/metismenu/metisMenu.min.js"></script>
     <script src="assets/libs/simplebar/simplebar.min.js"></script>
     <script src="assets/libs/node-waves/waves.min.js"></script>
-    <!-- apexcharts -->
     <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-    <!-- dashboard init -->
     <script src="assets/js/pages/apexcharts.init.js"></script>
     <script src="assets/js/pages/dashboard.init.js"></script>
-    <!-- App js -->
     <script src="assets/js/app.js"></script>
     <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>

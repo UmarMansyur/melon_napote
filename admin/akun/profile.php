@@ -22,7 +22,7 @@ if (isset($_GET['edit_produk'])) {
                             <img src="./assets/images/profile.svg" alt="logo" class="img-fluid d-block">
                         </div>
                         <div class="col-lg-8">
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3 mt-2">
                                     <label for="nama_pengguna" class="form-label">Nama Pengguna: </sup></label>
                                     <input type="text" class="form-control" name="nama_pengguna" placeholder="Nama Pengguna" value="<?= $getData['username'] ?>" required>
@@ -55,6 +55,7 @@ if (isset($_GET['edit_produk'])) {
                             $email = mysqli_escape_string($connection, $_POST["email"]);
                             $passwordBaru = mysqli_escape_string($connection, $_POST["passwordBaru"]);
                             $konfirmasi = mysqli_escape_string($connection, $_POST["konfirmasi"]);
+                            // var_dump($_FILES['foto']['name']);
                             if (empty($_FILES['foto']['name'])) {
                                 if (empty($passwordBaru)) {
                                     $query = $connection->query("UPDATE tb_pengguna SET username = '$nama_pengguna', email = '$email' WHERE id_pengguna = '$_SESSION[id]' ");
@@ -65,36 +66,34 @@ if (isset($_GET['edit_produk'])) {
                                     }
                                 }
                             } else {
-                                // echo "masuk";
-                                // die();
                                 $allowed = array("jpg", "JPG", "jpeg", "JPEG", "png", "PNG");
                                 $foto = explode(".", $_FILES['foto']['name']);
                                 $ext = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
                                 $nama_gambar = rand(1, 9999) . round(microtime(true)) . '.' . end($foto);
-                                $file = "./upload/pengguna/$nama_gambar";
+                                $file = "../upload/pengguna/$nama_gambar";
                                 move_uploaded_file($_FILES['foto']['tmp_name'], $file);
                                 if (in_array($ext, $allowed)) {
-                                    $query = $connection->query("UPDATE tb_pengguna SET username = '$nama_pengguna', email = '$email', password = '$konfirmasi', thumbnail = '$nama_gambar' WHERE id_pengguna = '$_SESSION[id]'");
+                                    if (empty($passwordBaru)) {
+                                        echo "$nama_gambar";
+                                        $query = $connection->query("UPDATE tb_pengguna SET username = '$nama_pengguna', email = '$email', thumbnail = '$nama_gambar' WHERE id_pengguna = '$_SESSION[id]' ");
+                                    } else {
+                                        if ($passwordBaru == $konfirmasi) {
+                                            $konfirmasi = password_hash($konfirmasi, PASSWORD_DEFAULT);
+                                            $query = $connection->query("UPDATE tb_pengguna SET username = '$nama_pengguna', email = '$email', password = '$konfirmasi', thumbnail = '$nama_gambar' WHERE id_pengguna = '$_SESSION[id]'");
+
+                                        }
+                                    }
                                 }
-                                echo "<script>
-                                        Swal.fire({
-                                            icon: 'success',
-                                            title: 'Data Berhasil disimpan',
-                                            showConfirmButton: false,
-                                            }).then(function(){
-                                            window.location.href = '?page=profile';
-                                        });
-                                    </script>";
                             }
-                            // echo "<script>
-                            //         Swal.fire({
-                            //             icon: 'success',
-                            //             title: 'Data Berhasil disimpan',
-                            //             showConfirmButton: false,
-                            //             }).then(function(){
-                            //             window.location.href = '?page=profile';
-                            //         });
-                            //     </script>";
+                            echo "<script>
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Data Berhasil dirubah',
+                                        showConfirmButton: false,
+                                        }).then(function(){
+                                        window.location.href = '?page=profile';
+                                    });
+                                </script>";
                         } catch (\Throwable $th) {
                         }
                     }
