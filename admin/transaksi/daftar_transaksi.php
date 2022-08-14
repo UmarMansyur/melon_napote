@@ -24,7 +24,10 @@
                             <?php endif ?>
                             <?php if($getData['type'] != 'kasir'): ?>
                             <div class="text-end my-3">
-                                <a href="../admin/transaksi/print/excel_transaksi.php" target="__blank" class="btn btn-success">Export Excel</a>
+                                </div>
+                                <div class="text-end my-3">
+                                    <a href="../admin/transaksi/print/excel_transaksi.php" target="__blank" class="btn btn-success">Export Excel</a>
+                                    <a href="index.php?page=transaksi" class="btn btn-primary">Tambah</a>
                             </div>
                             <?php endif ?>
                             <table id="dataTable" class="table table-bordered dt-responsive  nowrap w-100">
@@ -39,7 +42,11 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $getResource = $connection->query("SELECT * FROM tb_transaksi");
+                                    if($getData['type'] == 'user') {
+                                        $getResource = $connection->query("SELECT * FROM tb_transaksi LEFT JOIN tb_detail_transaksi ON tb_transaksi.id_transaksi = tb_detail_transaksi.id_transaksi WHERE id_pengguna = '$_SESSION[id]'");
+                                    } else {
+                                        $getResource = $connection->query("SELECT * FROM tb_transaksi");
+                                    }
                                     while ($data = mysqli_fetch_assoc($getResource)) :
                                     ?>
                                         <tr>

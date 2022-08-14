@@ -15,14 +15,17 @@
                     <h4 class="card-title">Daftar Melon</h4>
                     <p class="card-title-desc">Pastikan keterbaharuan produk baik dari stok maupun harga
                     </p>
+                    <div class="text-end my-3">
+                        <a href="index.php?page=tambah_jenis" class="btn btn-success">Tambah Jenis</a>
+                    </div>
                     <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
                             <tr class="text-center">
-                                <th class="text-center">Nama Produk</th>
+                                <th class="text-center">Jenis Melon</th>
                                 <?php if ($getData['type'] == 'kasir') : ?>
                                     <th>Edit</th>
                                     <th>Hapus</th>
-                                <?php elseif($getData['type'] == 'owner'): ?>
+                                <?php elseif ($getData['type'] == 'owner') : ?>
                                     <th>Tanggal Ditambahkan</th>
                                 <?php endif ?>
                             </tr>

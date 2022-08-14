@@ -48,7 +48,7 @@
                                         <?php endwhile ?>
                                         <tr class="align-middle">
                                             <?php
-                                            $data = mysqli_fetch_assoc($connection->query("SELECT SUM(harga) as total FROM tb_detail_transaksi WHERE id_pengguna = '$_SESSION[id]' AND status = 1 AND id_transaksi = '$_GET[id]'"));
+                                            $data = mysqli_fetch_assoc($connection->query("SELECT SUM(harga) as total FROM tb_detail_transaksi WHERE status = 1 AND id_transaksi = '$_GET[id]'"));
                                             ?>
                                             <td colspan="2" class="text-center fw-bold">Total</td>
                                             <td class="text-center">Rp <?= number_format($data['total'], 2, ',', '.') ?></td>

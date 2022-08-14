@@ -111,7 +111,7 @@ switch ($getData['type']) {
                 include "./dashboard.php";
                 break;
         }
-    break;
+        break;
     case 'user':
         switch ($page) {
             case 'dashboard':
@@ -133,9 +133,8 @@ switch ($getData['type']) {
                 include "./dashboard.php";
                 break;
         }
-    break;
+        break;
     default:
         # code...
         break;
-    
 }
