@@ -30,6 +30,9 @@ switch ($getData['type']) {
             case 'detail_transaksi':
                 include "./transaksi/detail_transaksi.php";
                 break;
+            case 'trqr':
+                include "./transaksi/qrcode/transaksi_qrcode.php";
+                break;
             default:
                 include "./dashboard.php";
                 break;
@@ -106,6 +109,9 @@ switch ($getData['type']) {
                 break;
             case 'setting':
                 include './manajemen_pengguna/setting.php';
+                break;
+            case 'trqr':
+                include "./transaksi/qrcode/transaksi_qrcode.php";
                 break;
             default:
                 include "./dashboard.php";

@@ -15,7 +15,7 @@ if(empty($_GET['qr'])) {
     <title>Document</title>
 </head>
 <body>
-    <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=<?= $data['nama_melon']  ?>&choe=UTF-8" alt="">
+    <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=<?= $data['id_melon']  ?>&choe=UTF-8" alt="">
     <script>
        window.onload = function() { window.print(); }
 

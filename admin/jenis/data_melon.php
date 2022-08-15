@@ -22,7 +22,7 @@
                         <thead>
                             <tr class="text-center">
                                 <th class="text-center">Jenis Melon</th>
-                                <?php if ($getData['type'] == 'kasir') : ?>
+                                <?php if ($getData['type'] == 'admin') : ?>
                                     <th>Edit</th>
                                     <th>Hapus</th>
                                 <?php elseif ($getData['type'] == 'owner') : ?>
@@ -38,7 +38,7 @@
                             ?>
                                 <tr class="text-center">
                                     <td class="text-start"><?= $p['jenis_melon'] ?></td>
-                                    <?php if ($getData['type'] == 'kasir') : ?>
+                                    <?php if ($getData['type'] == 'admin') : ?>
                                         <td>
                                             <a href="index.php?page=tambah_jenis&edit_produk=<?= $p['id_jenis_melon'] ?>" class="btn btn-outline-secondary btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                         </td>

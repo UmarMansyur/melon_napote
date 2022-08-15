@@ -9,6 +9,7 @@
     </div>
     <!-- end page title -->
     <div class="row">
+        <!-- col -->
         <div class="col-12 mt-3">
             <div class="card">
                 <div class="card-body">
@@ -26,7 +27,7 @@
                                 <th>Stok</th>
                                 <th>Harga</th>
                                 <th>Satus</th>
-                                <?php if ($getData['type'] == 'kasir') : ?>
+                                <?php if ($getData['type'] == 'admin') : ?>
                                     <th>Hapus</th>
                                 <?php endif ?>
                             </tr>
@@ -45,7 +46,7 @@
                                     <td><a href="./qrCode/qr.php?qr=<?= $p['id_melon'] ?>" target="__blank" class="btn btn-outline-info btn-sm"><i class="bx bx-printer"></i></a></td>
                                     </td>
 
-                                    <?php if ($getData['type'] == 'kasir') : ?>
+                                    <?php if ($getData['type'] == 'admin') : ?>
 
                                         <td>
                                             <a href="index.php?page=tambah_melon&edit_produk=<?= $p['id_melon'] ?>" class="btn btn-outline-secondary btn-sm"><i class="fas fa-pencil-alt"></i></a>
@@ -84,6 +85,7 @@
                     } ?>
                 </div>
             </div>
-        </div> <!-- end col -->
+        </div> 
+        <!-- end col -->
     </div>
 </div>

@@ -11,16 +11,36 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Transaksi</h4>
-                    <p class="card-title-desc">Pastikan data yang diinputkan telah valid!, data di menu transaksi akan hilang ketika status sudah dibayar!</p>
+                    <p class="card-title-desc">Arahkan camera, kemudian anda akan mendapatkan informasi melon!</p>
                     <div class="row">
-                        <div class="col-lg-4 d-none d-xl-inline-block">
-                            <img src="./assets/images/undraw_shopping_app_flsj.svg" alt="logo" class="img-fluid d-block">
+                        <div class="col-lg-5 d-none d-xl-inline-block">
+                            <video id="preview"></video>
                         </div>
-                        <div class="col-lg-8">
-                            <div class="text-end my-3">
-                                <a type="button" class="btn btn-primary" href="index.php?page=trqr">Scan</a>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToCart">Tambah Transaksi</button>
-                            </div>
+                        <div class="col-lg-7">
+                            <form action="" method="POST" class="px-1">
+                                <div class="mb-3">
+                                    <label for="nama_melon">Pilih Melon: </label>
+                                    <select name="nama_melon" id="nama_melon" class="form-select">
+                                        <option value="">Pilih Melon</option>
+                                        <?php
+                                        $getResource = $connection->query("SELECT * FROM tb_melon LEFT JOIN tb_jenis_melon ON tb_melon.id_jenis_melon = tb_jenis_melon.id_jenis_melon");
+                                        while ($data = mysqli_fetch_assoc($getResource)) :
+                                        ?>
+                                            <option value="<?= $data['id_melon'] ?>"><?= $data['jenis_melon'] . ' ~ ' . $data['nama_melon'] ?></option>
+                                        <?php endwhile ?>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="berat">Berat: </label>
+                                    <input type="number" name="berat" id="berat" class="form-control" placeholder="Contoh: 1 kg" required>
+                                </div>
+                                <div class="text-end">
+                                    <button class="btn btn-light" data-bs-dismiss="modal">Batal</button>
+                                    <button class="btn btn-success" name="simpan">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-12 mt-3">
                             <?php
                             $data = mysqli_fetch_assoc($connection->query("SELECT count(*) as banyak FROM tb_detail_transaksi WHERE id_pengguna = '$_SESSION[id]' AND status = 0"));
                             ?>
@@ -111,8 +131,7 @@
                                                     <input type="number" name="berat" id="berat" class="form-control" placeholder="Contoh: 1 kg" required>
                                                 </div>
                                                 <div class="text-end">
-                                                    <button class="btn btn-light" data-bs-dismiss="modal">Batal</button>
-                                                    <button class="btn btn-success" name="simpan">Simpan</button>
+                                                    <button class="btn btn-success" name="simpan">Tambahkan</button>
                                                 </div>
                                             </form>
 
@@ -258,3 +277,20 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    let scanner = new Instascan.Scanner({
+        video: document.getElementById('preview')
+    });
+    scanner.addListener('scan', function(content) {
+        document.getElementById('nama_melon').value = content;
+    });
+    Instascan.Camera.getCameras().then(function(cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('No cameras found.');
+        }
+    }).catch(function(e) {
+        console.error(e);
+    });
+</script>
